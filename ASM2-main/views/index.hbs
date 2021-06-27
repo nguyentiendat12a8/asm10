@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align:center;">
+    {{>header}}
+    <table border="1" align="center" width = "80%">
+        <tr style="color: rgb(111, 0, 255);">
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Discription</th>
+            <th>Color</th>
+            <th>Price</th>
+            <th>Option</th>
+        </tr>
+    {{# each model}}
+        
+        <tr>
+            <td>{{_id}}</td>
+            <td>{{productName}}</td>
+            <td>{{description}}</td>
+            <td>{{color}}</td>
+            <td>{{price}}</td>
+            <td><a href="/delete?id={{_id}}" onclick="return confirmDelete('{{productName}}')"><button>Delete</button>  </a>
+            <a href="/edit?id={{_id}}"><button>Edit</button>  </a>
+            </td>
+        </tr>
+    {{/each}}
+    </table>
+    {{> footer}}                                                          
+    <script>
+        function confirmDelete(name){
+            return confirm('are you sure to delete this ??'+ name);
+        }
+    </script>
+</body>
+</html>
